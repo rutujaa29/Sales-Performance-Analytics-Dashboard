@@ -1,1 +1,39 @@
+## KPI_Queries.sql
 
+
+SELECT ROUND(SUM(Sales),2) AS Total_Revenue FROM sales;
+
+SELECT ROUND(SUM(Profit),2) AS Total_Profit FROM sales;
+
+SELECT COUNT(DISTINCT `Order ID`) AS Total_Orders
+FROM sales;
+
+SELECT SUM(Quantity) AS Total_Items_Sold
+FROM sales;
+
+
+
+## Business_Analysis.sql
+
+-- Region Wise Sales
+
+SELECT Region,
+ROUND(SUM(Sales),2) Revenue
+FROM sales
+GROUP BY Region;
+
+-- Category Wise Sales
+
+SELECT Category,
+ROUND(SUM(Sales),2) Revenue
+FROM sales
+GROUP BY Category;
+
+-- Top Customers
+
+SELECT `Customer Name`,
+ROUND(SUM(Sales),2) Revenue
+FROM sales
+GROUP BY `Customer Name`
+ORDER BY Revenue DESC
+LIMIT 10;
